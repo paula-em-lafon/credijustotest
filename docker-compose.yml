@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./exchange
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./exchange/:/usr/src/exchange/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+      - redis
+  
+  celery:
+    build: ./exchange
+    command: celery -A exchange worker -l INFO
+    volumes:
+      - ./exchange/:/usr/src/exchange/
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - web
+      - redis
+  
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=hello_django
+      - POSTGRES_PASSWORD=hello_django
+      - POSTGRES_DB=hello_django_dev
+  
+  redis:
+    image: redis:alpine
+
+volumes:
+  postgres_data:
