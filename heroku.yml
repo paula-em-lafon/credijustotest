@@ -9,4 +9,4 @@ build:
     celery: exchange/Dockerfile
 run:
   web: python manage.py runserver 0.0.0.0:8000
-  worker: celery -A exchange worker -l INFO
+  celery: celery -A exchange worker -l INFO
