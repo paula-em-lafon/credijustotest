@@ -8,5 +8,5 @@ build:
     web: exchange/Dockerfile
     celery: exchange/Dockerfile
 run:
-  web: python manage.py runserver 0.0.0.0:8000
+  web: gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
   celery: celery -A exchange worker -l INFO
