@@ -16,7 +16,7 @@ services:
   
   celery:
     build: ./exchange
-    command: celery -A exchange worker -l INFO
+    command: celery -A exchange worker -l info -B --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - ./exchange/:/usr/src/exchange/
     env_file:

@@ -7,6 +7,10 @@ build:
   docker:
     web: exchange/Dockerfile
     celery: exchange/Dockerfile
+release:
+  command:
+    - python manage.py migrate
+  image: web
 run:
   web: gunicorn exchange.wsgi:application --bind 0.0.0.0:$PORT
-  celery: celery -A exchange worker -l INFO
+  celery: celery -A exchange worker -l info -B --scheduler django_celery_beat.schedulers:DatabaseScheduler
