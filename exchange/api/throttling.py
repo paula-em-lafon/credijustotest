@@ -13,7 +13,9 @@ class UserRateThrottle(SimpleRateThrottle):
 
     def get_cache_key(self, request, view):
         api_key = APIKey()
-        boolean = api_key.is_valid(request.META['HTTP_AUTHORIZATION'].split()[1])
+        key = request.META["HTTP_AUTHORIZATION"].split()[1]
+        api_key = APIKey.objects.get_from_key(key)
+        boolean = api_key.is_valid(key)
         if boolean:
             ident = request.META['HTTP_AUTHORIZATION'].split()[1]
         else:
