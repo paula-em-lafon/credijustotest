@@ -20,7 +20,7 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat_schedule = {
     'read_bdm': {
         'task': 'api.tasks.read_bdm',
-        'schedule': crontab(hour=0,minute=0, nowfun=nowfun),
+        'schedule': crontab(hour=12,minute=0, nowfun=nowfun),
     },
     'read_dof': {
         'task': 'api.tasks.read_dof',
