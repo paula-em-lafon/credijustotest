@@ -2,10 +2,11 @@ import requests
 import json
 import datetime
 import pytz
+import os
 
 timezone = pytz.timezone("America/Mexico_city")
 
-banxico_api_token = "6a2da7f2796ce7b0c359ce845b03044d62d0edfd0b32c33716cf93022fcb7823"
+banxico_api_token = os.environ.get("BANXICO_KEY")
 
 def parse_bdm():
     now = datetime.datetime.utcnow()

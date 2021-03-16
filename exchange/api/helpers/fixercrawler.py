@@ -2,10 +2,11 @@ import requests
 import json
 import datetime
 import pytz
+import os
 
 timezone = pytz.timezone("America/Mexico_city")
 
-fixer_api_token = "936acc04029dd419e39479e02ca9d673"
+fixer_api_token = os.environ.get("FIXER_KEY")
 
 def parse_fixer():
     now = datetime.datetime.utcnow()

@@ -5,6 +5,8 @@ from .models import BdmExch, DofExch, FixerExch
 from rest_framework_api_key.models import APIKey
 import datetime
 
+print("-----------------hello----------------")
+
 class BDMParsingTestCase(APITestCase):
     def test_bdm_reading(self):
         read_bdm()
