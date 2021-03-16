@@ -135,6 +135,8 @@ STATIC_URL = '/static/'
 
 CELERY_BROKER_URL = os.environ.get("REDIS_URL", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL", "redis://redis:6379/0")
+CELERY_TIMEZONE = 'America/Mexico_City' # write your timezone
+CELERY_ENABLE_UTC = False
 
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {

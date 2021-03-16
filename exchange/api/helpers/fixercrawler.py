@@ -9,7 +9,7 @@ timezone = pytz.timezone("America/Mexico_city")
 fixer_api_token = os.environ.get("FIXER_KEY")
 
 def parse_fixer():
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.utcnow(timezone)
     try:
         eur_to_usd_str = "http://data.fixer.io/api/latest" +\
             "?access_key=" +fixer_api_token +\

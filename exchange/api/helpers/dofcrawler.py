@@ -7,7 +7,7 @@ import pytz
 timezone = pytz.timezone("America/Mexico_city")
 
 def parse_dof():
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now(timezone)
     fourteen_days = now - datetime.timedelta(days = 14)
     urlstr = "https://www.dof.gob.mx/indicadores_detalle.php?cod_tipo_indicador" +\
         "=158&dfecha=" + str(fourteen_days.day).zfill(2) + \

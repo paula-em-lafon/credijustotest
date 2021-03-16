@@ -9,7 +9,7 @@ timezone = pytz.timezone("America/Mexico_city")
 banxico_api_token = os.environ.get("BANXICO_KEY")
 
 def parse_bdm():
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now(timezone)
     urlstr = "https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/" +\
     "oportuno?token=" + banxico_api_token
     try:
